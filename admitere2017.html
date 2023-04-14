@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="designadmitere2017.css">
+<html>
+
+<head>
+    <title>My Website</title>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 200) {
+                    $('#topbtn').fadeIn();
+                } else {
+                    $('#topbtn').fadeOut();
+                }
+            });
+            $('#topbtn').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 800);
+                return false;
+            });
+        });
+    </script>
+    <div class="black-bar">
+        <div class="button-container">
+            <a href="code.html"><button class="button" style="margin-right: 25px;">Home</button></a>
+            <a href="informatii.html"><button class="button" style="margin-right: 25px;">Informații</button></a>
+            <a href="admitere2019.html"><button class="button" style="margin-right: 25px;">Admitere 2019</button></a>
+            <a href="admitere2018.html"><button class="button" style="margin-right: 25px;">Admitere 2018</button></a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-box">
+            <h2 class="title">
+                <p>nbspAdmitere Informatică Iași 2017 &nbsp &nbsp Subiecte și rezolvări</p>
+            </h2>
+        </div>
+        <div class="text-box">
+            <h1>Subiectul I. Problema 1</h1>
+            <div class="other-box">
+                <p>
+                    Fie x o variabilă întreagă care conține cel mai mic număr natural nenul, multiplu de 36 divizibil cu
+                    toate numerele prime mai mici decât 10. Precizați care dintre expresiile C++ de mai jos este
+                    adevărată. <br>
+                    <b>A. &nbsp&nbsp&nbsp</b> <i>(x < 1000) && (x % 27==0)</i><br>
+                            <b>B. &nbsp&nbsp&nbsp</b> <i>(x > 1000) && ((x * x * x) % 1000 == 0</i><br>
+                            <b>C. &nbsp&nbsp&nbsp</b> <i>((x * x) / 16) % 2 == 0</i><br>
+                            <b>D. &nbsp&nbsp&nbsp</b> <i>(x % 100 == 0) || (x / 100 == 0)</i><br>
+                            <div class="text-explicatie">
+                                Numerele prime mai mici decât 10 sunt 2, 3, 5 și 7, deci variabila x este egală cu
+                                cmmmc(2,3,5,7,36)=1260cmmmc(2,3,5,7,36)=1260. Acum trebuie să evaluăm fiecare expresie
+                                dată în parte. <b>A</b> este falsă deoarece 1260 > 1000. <b>B</b> este adevărată pentru
+                                că 1260 > 1000 și x * x * x este divizibil cu 1000, căci se termină în trei zerouri.
+                                <b>C</b> este falsă deoarece (x * x) / 16 == 99225, care este impar. <b>D</b> este falsă
+                                pentru că nici x % 100 == 0 și nici x / 100 == 0 nu sunt adevărate. Așadar, varianta
+                                corectă este <b>B</b>
+                            </div>
+                </p>
+            </div>
+        </div>
+        <div class="text-box">
+            <h1>Subiectul I. Problema 2</h1>
+            <div class="other-box">
+                <p>Se consideră subprogramul F de mai jos, descris în pseudocod. Subprogramul primește un număr natural
+                    nenul în parametrul u și întoarce un număr natural când se oprește.</p>
+                <div class="code-block">
+                    <p>
+                    <div class="code-text">
+                        <div>&nbsp &nbsp subprogram F(u)<br></div>
+                        <div>&nbsp &nbsp &nbsp &nbsp(u - număr natural nenul)<br></div>
+                        <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp count <- 0<br>
+                        </div>
+                        <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp cât timp u !=1<br> </div>
+                        <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp dacă u este par</div>
+                        <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp u <- u /2<br>
+                        </div>
+                        <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp altfel<br></div>
+                        <div>&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp u <- u * 3 + 1<br>
+                        </div>
+                        <div>&nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp count <- count+ 1 <br>
+                        </div>
+                        <div>&nbsp &nbsp &nbsp&nbsp &nbsp &nbspreturnează count</div>
+                        </p>
+
+                    </div>
+                </div>
+                <b>a)</b> Care este valoarea returnată de subprogram pentru parametrul u=10?
+            </div>
+            <div class="text-explicatie">
+                Iată valorile variabilelor <i>u</i> și <i>count</i> după fiecare intrare în while:
+                <div class="image-box">
+                    <img src="first-tabel.jpg" alt="My image">
+                </div>
+                Răspunsul este 6.
+            </div>
+            <div class="other-box">
+                <b>b)</b> Dați exemplu de un număr natural u astfel încât F(u) să returneze 7.
+            </div>
+            <div class="text-explicatie">
+                Trebuie să găsim un număr pentru care se efectuează 7 operații. Cel mai simplu ar fi să-l facem să
+                treacă mereu prin prima ramură a if-ului, pentru a-i afla ușor valoarea. Observăm că
+                F(2<sup>n</sup>)returnează n, deoarece 2<sup>n</sup> va trebui să se înjumătățească de n ori pentru a
+                deveni 1. Deci, un răspuns posibil este 2<sup>7</sup>, adică 128.
+            </div>
+            <div class="other-box">
+                <b>c)</b> Scrieți în pseudocod un subprogram recursiv, echivalent cu F, care nu folosește instrucțiuni
+                repetitive.
+            </div>
+            <div class="text-explicatie">
+                Privim fiecare intrare în while a lui u ca pe un apel recursiv ce îl are ca parametru pe noul u.
+                Subprogramul recursiv cerut va arăta cam așa:
+            </div>
+            <div class="code-block">
+                <div class="code-text">
+                    <p>
+                    <div>&nbsp &nbsp subprogram subprogram F(u)</div>
+                    <div>&nbsp &nbsp &nbsp &nbsp (u - număr natural nenul)</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp dacă u = 1 atunci</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp returnează 0</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp dacă u este par atunci</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp returnează 1 + F(u / 2)</div>
+                    <div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp returnează 1 + F(u * 3 + 1)</div>
+                    </p>
+                </div>
+            </div>
+            <div class="other-box">
+                <b>d)</b> Scrieți o funcție C++ care implementează subprogramul F dat.
+            </div>
+            <div class="text-explicatie">
+                Un răspuns posibil este:
+            </div>
+            <div class="code-block">
+                <div class="code-text">
+                    <div>&nbsp &nbsp int F(int u) {</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp int count = 0;</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp while (u != 1) {</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp if (u % 2 == 0)</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp u /= 2;</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp else</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp u = u * 3 + 1;</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp &nbsp &nbspcount++;</div>
+                    <div> &nbsp &nbsp &nbsp &nbsp}</div>
+                    <div>&nbsp &nbsp &nbsp &nbspreturn count;</div>
+                    <div>&nbsp &nbsp }</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
