@@ -69,6 +69,7 @@ body {
 .text-explicatie{
     font-size: 21px;
 }
+/* code background*/
 .code-block{
     background: #1c1c1c;
     border-radius: 0.5rem;
@@ -88,6 +89,7 @@ body {
     padding: 0!important;
     font-size: 22.5px;
 }
+
 .image-box{
     margin-left: 60vh;
     margin-top: 1vh;
