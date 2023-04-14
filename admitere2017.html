@@ -7,33 +7,20 @@
 </head>
 
 <body>
-    <script>
-        $(document).ready(function () {
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 200) {
-                    $('#topbtn').fadeIn();
-                } else {
-                    $('#topbtn').fadeOut();
-                }
-            });
-            $('#topbtn').click(function () {
-                $('html, body').animate({ scrollTop: 0 }, 800);
-                return false;
-            });
-        });
-    </script>
+    <button class="top-button">Top</button>
+    <script src="script.js"></script>
     <div class="black-bar">
         <div class="button-container">
-            <a href="code.html"><button class="button" style="margin-right: 25px;">Home</button></a>
-            <a href="informatii.html"><button class="button" style="margin-right: 25px;">Informații</button></a>
-            <a href="admitere2019.html"><button class="button" style="margin-right: 25px;">Admitere 2019</button></a>
-            <a href="admitere2018.html"><button class="button" style="margin-right: 25px;">Admitere 2018</button></a>
+            <a href="code.html"><button class="button" style="margin-right: 30px;">Home</button></a>
+            <a href="informatii.html"><button class="button" style="margin-right: 30px;">Informații</button></a>
+            <a href="admitere2019.html"><button class="button" style="margin-right: 30px;">Admitere 2019</button></a>
+            <a href="admitere2018.html"><button class="button" style="margin-right: 30px;">Admitere 2018</button></a>
         </div>
     </div>
     <div class="container">
         <div class="text-box">
             <h2 class="title">
-                <p>nbspAdmitere Informatică Iași 2017 &nbsp &nbsp Subiecte și rezolvări</p>
+                <p>&nbsp &nbsp Admitere Informatică Iași 2017 &nbsp &nbsp Subiecte și rezolvări</p>
             </h2>
         </div>
         <div class="text-box">
