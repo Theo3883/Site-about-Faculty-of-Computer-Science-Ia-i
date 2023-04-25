@@ -133,7 +133,159 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="text-box">
+            <h1>Subiectul II. Problema 1</h1>
+            <div class="other-box">
+                Care este numărul maxim de noduri de grad 3 într-un graf neorientat cu 5 noduri?<br>
+                <b>A.</b>&nbsp 2<br>
+                <b>B.</b>&nbsp 3<br>
+                <b>C.</b>&nbsp 4<br>
+                <b>D.</b>&nbsp 5<br>
+            </div>
+            <div class="text-explicatie">
+                Numărul maxim de noduri de grad 3 într-un graf neorientat cu 5 noduri este <i><b>4</b></i>, și se atinge când 4 dintre
+                noduri formează un subgraf complet, iar al 5-lea nod rămâne izolat. Deci, varianta corectă este <i><b>C</b></i>.
+            </div>
+        </div>
+        <div class="text-box">
+            <h1>Subiectul II. Problema 2</h1>
+            <div class="other-box">
+                Fie un graf neorientat cu mulțimea nodurilor {1,2,…,2015}. Două noduri i și j sunt unite printr-o muchie
+                dacă și numai dacă maxmax(i,j)=2min(i,j) sau max(i,j)=2min(i,j)+1. Care este numărul de muchii ale
+                acestui graf?
+            </div>
+            <div class="text-explicatie">
+                Reformulând proprietatea dată, în graf există muchia 
+                [i,j], cu j>i, dacă și numai dacă [j/2]=i. Evident, pentru fiecare număr 
+                j din mulțimea nodurilor există exact un i astfel încât [j/2]=i, și deci fiecărui număr îi corespunde
+                exact o muchie. Excepție face  1, deoarece [1/2]=0, care nu aparține mulțimii nodurilor. Așadar,
+                răspunsul este 2014, varianta corectă fiind C. Se observă că graful dat este arbore, pentru că numărul
+                muchiilor este cu 1 mai mic decât numărul nodurilor.
+
+            </div>
+        </div>
+        <div class="text-box">
+            <h1>Subiectul II. Problema 3</h1>
+            <div class="other-box">
+                Considerăm codificarea binară a caracterelor, în care fiecărui simbol îi revine reprezentarea pe 8 biți
+                a codului său ASCII. De exemplu, caracterului <i><b>'A'</b></i>, având codul ASCII <i><b>65</b></i>, îi
+                va corespunde reprezentarea
+                binară <i><b>01000001</b></i>. Scrieți un program C++ care să conțină următoarele funcții:<br>
+                <div><br>&nbsp &nbsp &nbsp &nbsp <b>a)</b>&nbsp Funcția <i><b>convert_char</i></b> primește ca argument
+                    un
+                    caracter și construiește un tablou cu 8 elemente 0 sau 1, reprezentând codificarea binară a
+                    caracterului primit.</div>
+                <div><br>&nbsp &nbsp &nbsp &nbsp <b>b)</b>&nbsp Funcția <i><b>convert_string</b></i> primește ca
+                    argument un
+                    șir de
+                    caractere s și construiește o matrice cu n linii și 8 coloane (unde n este lungimea șirului s),
+                    linia i a matricei reprezentând codificarea binară a caracterului de pe poziția i din șir. </div>
+                <div><br>&nbsp &nbsp &nbsp &nbsp <b>c)</b>&nbsp Funcția <i><b>submatrix_size</b></i> primește ca
+                    argument o
+                    matrice m formată doar din elemente 0 și 1 (precum și dimensiunile sale) și determină dimensiunea
+                    celei mai mari submatrice pătratice a lui m conținând elemente având toate aceeași valoare (fie 0,
+                    fie 1).</div>
+                <div><b><br>Observație:</b>&nbsp Funcțiile pot avea și alte argumente față de cele specificate mai sus.
+                </div>
+                <div><br>Programul va citi de la tastatură un șir de caractere s și va afișa rezultatul determinat de
+                    funcția <i><b>submatrix_size</b></i> aplicată pe matricea construită de <b><i>convert_string</i></b>
+                    aplicată asupra lui s.</div>
+                <div><b>Exemplu:</b>&nbsp Pentru șirul de caractere s = "IDEEA", se va afișa 3, matricea corespunzătoare
+                    fiind:</div>
+                <div class="img-center">
+                    <img src="1.jpg" width="370">
+                </div>
+            </div>
+            <div class="text-explicatie">
+                O problemă de implementare destul de simplă. În enunț scrie că funcțiile pot avea și alți parametri pe
+                lângă cei dați, așa că am transmis toate tablourile ca parametri. Pentru <i><b>convert_char</b></i> aflu
+                valoarea
+                fiecărui bit al lui chr, folosind operații pe biți, și îl pun la poziția corespunzătoare în vectorul
+                bin. În funcția <i><b>convert_string</b></i> nu fac decât să apelez <i><b>convert_char</b></i> pentru
+                fiecare linie a matricei.<br><br>
+
+                În funcția <i><b>submatrix_size</b></i> parcurg matricea, iar pentru fiecare poziție (i,j) aflu lungimea
+                maximă a unei
+                submatrice pătratice cu colțul stânga-sus în (i,j). Pentru asta am apelat o funcție
+                auxiliară, ij_length. În această funcție încerc să măresc cât mai mult lungimea submatricei curente,
+                având grijă să nu ies din matricea mare. La fiecare pas verific dacă vreun element proaspăt adăugat la
+                submatrice este diferit de m[i][j]. Dacă da, lungimea actuală nu este validă, răspunsul fiind len−1. La
+                finalul funcției, trebuie de asemenea returnat len-1, căci poate n-am întâmpinat niciun element diferit
+                de m[i][j] pentru nicio valoare posibilă a lui len.
+            </div>
+            <div class="code-block">
+                <div class="code-text">
+                    <img src="testimg.png" width="700" height="950" alt="image">
+                </div>
+            </div>
+            <div class="text-explicatie">
+                Complexitatea funcției <i><b>submatrix_size</b></i> este O(n<sup>4</sup>), dar cum numărul de coloane
+                ale matricei este limitat
+                la 8, o putem considera O(n<sup>2</sup>) cu o constanta foarte mare ( 576 = 8 * 36 * 2 : 8 de la len-ul
+                maxim, 36
+                *2= ( 8 * 9 / 2 ) * 2 de la verificările corespunzătoare fiecărui len de la 1 la 8). Cred că aceasta
+                soluție ar fi obținut punctaj maxim, dar eu unul aș fi aplicat un algoritm mult mai bun, ce folosește
+                programare dinamică, cu constanta 2: <br> <br>
+                Fie următoarea dinamică: dp[i][j] = dimensiunea maximă a unei submatrice pătratică care conține numai
+                elemente cu valoarea x și care are colțul din dreapta-jos în 9i,j). Recurența este destul de cunoscută:
+                <img class="img-center" src="dptest.png" width="800" alt="image">
+                Explicația este că dp[i−1][j]+1 ne spune care e lungimea maximă pe verticală, dp[i][j−1]+1 pe
+                orizontală, iar dp[i−1][j−1]+1 pe diagonală. Dintre cele trei valori trebuie să alegem minimul, ca să
+                fim siguri că submatricea nu conține niciun element diferit de x. Vom construi așadar două dinamici: una
+                pentru 0 și una pentru 1. De aici vine constanta 2 din spatele complexității de O(n<sup>2</sup>). Iată
+                implementarea
+                acestei idei:
+            </div>
+            <div class="code-block">
+                <div class="code-text">
+                    <img src="ad2.png" width="900" alt="image">
+                </div>
+            </div>
+        </div>
+        <div class="text-box">
+            <h1>Subiectul II. Problema 4</h1>
+            <div class="other-box">
+                Fie multimedia S = {1,2, … ,n} unde n > = 4 este un număr natural multiplu de 4. Scrieți un program C++
+                care:
+            </div>
+            <div class="text-explicatie">
+                Prima cerință este trivială, așa că trecem la <b>b</b>: Observăm că dacă
+                cuplăm 1 cu n, 2 cu n−1, 3 cu n−2 etc., obținem n/2 perechi de sume egale. Cum n este multiplu
+                de 4, n/2 va fi număr par, așa că putem pune o jumătate dintre perechi în mulțimea <b>A</b>și cealaltă
+                jumătate în mulțimea <b>B</b>. Structura mulțimilor va fi:
+                <img src="ad3.png" class="img-center" width="500" alt="image">
+                <br>Să notăm cu <i><b>sum(X)</b></i> suma elementelor din mulțimea X. Pima observație cu privirea la
+                cerință c esta că
+                dacă p este impar, nu există soluție. Motivul este că suma numerelor de la 1 la n (să o notăm cu 2 * S )
+                este pară, din moment ce n este multiplu de 4. Dacă din S îl scădem pe p, care este impar, vom obține un
+                număr impar, deci <i><b>sum(A)</b></i> și <i><b>sum(B)</b></i> nu vor putea fi egale. Dacă în
+                schimb p este par, trebuie să
+                echilibrăm cele două mulțimi astfel încât <i><b>sum(A’) = sum (B’) = S - p/2</b></i>. (Din mulțimea
+                <i><b>A</b></i> o vom forma pe
+                <i><b>A’</b></i>, iar din <i><b>B</b> pe <i><b>B’</b></i>) . Avem de analizat următoarele două cazuri:
+                    <br>
+                    <div class="point"></div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp p aparține lui <i><b>B</b></i>, p/2
+                    impar. Avem p/2 aparține lui <i><b>A</b></i>, așa că putem să-l
+                    mutăm pe p/2 din A în B. Obținem <i><b>sum (A’) = sum(A) - p/2 = S - p/2</b></i> și <i><b>sum(B’) =
+                            sum(B) - p + p/2 = S - p/2</b></i>
+                    <div class="point"></div>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp p aparține lui <i><b>B</b></i>, p/2
+                    par. Avem p/2 + 1
+                    aparține lui <i><b>A</b></i>. Putem să-i ducem pe p/2 + 1 și pe 1 din <i><b>A</b></i> în
+                    <i><b>B</b></i>, iar pe 2 din <i><b>B</b></i> în <i><b>A</b></i>. Obținem astfel
+                    <i><b>sum(A’) = sum(A) - p/2 - 1 - 1 + 2 = S - p/2</b></i> și <i><b>sum(B’).= sum (B) - p/2 + 1 + 1
+                            - 2 = S - p/2</b></i>
+                    <br><br>
+                    Iată cum arată implementarea în C++ a acestor idei:
+                    <div class="code-block">
+                        <div class="code-text">
+                            <img src="ad4.png" width="950" alt="image">
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="text-box">
+            <h1>Subiectul III. Problema 1</h1>
+        </div>
     </div>
 
 </body>
