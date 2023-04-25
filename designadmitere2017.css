@@ -158,3 +158,14 @@ body {
   margin-right: 3px; 
   margin-left: 50px;
 }
+.point1 {
+  width: 7px;
+  height: 7px;
+  border-radius: 60%;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  position: relative;
+  top: 16px; 
+  margin-right: 3px; 
+  margin-left: 50px;
+}

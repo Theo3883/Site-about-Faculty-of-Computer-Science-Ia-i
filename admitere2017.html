@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>My Website</title>
+    <title>Admitere 2017</title>
 </head>
 
 <body>
@@ -13,8 +13,8 @@
         <div class="button-container">
             <a href="code.html"><button class="button" style="margin-right: 30px;">Home</button></a>
             <a href="informatii.html"><button class="button" style="margin-right: 30px;">Informații</button></a>
-            <a href="admitere2019.html"><button class="button" style="margin-right: 30px;">Admitere 2019</button></a>
             <a href="admitere2018.html"><button class="button" style="margin-right: 30px;">Admitere 2018</button></a>
+            <a href="admitere2019.html"><button class="button" style="margin-right: 30px;">Admitere 2019</button></a>
         </div>
     </div>
     <div class="container">
@@ -143,8 +143,10 @@
                 <b>D.</b>&nbsp 5<br>
             </div>
             <div class="text-explicatie">
-                Numărul maxim de noduri de grad 3 într-un graf neorientat cu 5 noduri este <i><b>4</b></i>, și se atinge când 4 dintre
-                noduri formează un subgraf complet, iar al 5-lea nod rămâne izolat. Deci, varianta corectă este <i><b>C</b></i>.
+                Numărul maxim de noduri de grad 3 într-un graf neorientat cu 5 noduri este <i><b>4</b></i>, și se atinge
+                când 4 dintre
+                noduri formează un subgraf complet, iar al 5-lea nod rămâne izolat. Deci, varianta corectă este
+                <i><b>C</b></i>.
             </div>
         </div>
         <div class="text-box">
@@ -285,9 +287,99 @@
         </div>
         <div class="text-box">
             <h1>Subiectul III. Problema 1</h1>
+            <div class="other-box">
+                Într-o urnă se află4 bile de culoare albă și 3 bile de culoare neagră. Se extrag bilele pe rând și se
+                reține secvența de 7 culori obținută. Câte astfel de secvențe distincte sunt? <br><br>
+                <b>A)</b> &nbsp 210<br>
+                <b>B)</b> &nbsp 35<br>
+                <b>C)</b> &nbsp 70<br>
+                <b>D)</b> &nbsp 840
+            </div>
+            <div class="text-explicatie">
+                Cum bilele sunt de doar două culori, putem spune că două secvențe de bile diferă dacă șirurile formate
+                din pozițiile ce conțin bile albe diferă. 
+                Numărul secvențelor din urmă este Combinări 4+3 luate câte 4 adică 35. Varianta corectă este <b>B</b>.
+            </div>
+        </div>
+        <div class="text-box">
+            <div class="other-box">
+                Pentru funcțiile <b>F1</b> și <b>F2</b> definite mai jos, ce valoare va returna apelul
+                <i><b>F1(34)</b></i> ?
+                <div class="code-block">
+                    <img src="ad5.png" width="300" alt="image">
+                </div>
+            </div>
+            <div class="text-explicatie">
+                Ca de obicei, la acest tip de exercițiu trebuie să urmărim lanțul de apeluri recursive. De data asta
+                avem parte de o situație un pic mai specială, pentru că ni se dau două funcții indirect recursive:
+                <i><b>F1</b></i>
+                apelează pe <i><b>F2</b></i>, iar <i><b>F2</b></i> pe <i><b>F1</b></i>. Apropo, funcția <i><b>F2</b></i>
+                a trebuit declarată înainte de a defini funcția <i><b>F1</b></i>,
+                pentru că în definiția ei, <i><b>F1</b></i> se folosește de <i><b>F2</b></i>.
+            </div>
+            <div class="code-block">
+                <img src="ad6.png" width="400" alt="image">
+            </div>
+        </div>
+        <div class="text-box">
+            <h1>Subiectul II. Problema 4</h1>
+            <div class="other-box">
+                Un puzzle Minesweeper este o matrice de n linii și m coloane care conține la fiecare poziție
+                numărul 0 (reprezentând un loc liber) sau −1 (reprezentând o mină). Pozițiile adiacente
+                poziției (i,j) sunt:
+                {(i − 1, j − 1), (i − 1, j), (i − 1, j + 1), (i, j − 1), (i, j + 1), (i + 1, j − 1), (i + 1, j), (i + 1,
+                j +
+                1)} ⋂ {0, . . . , n − 1} × {0, . . . , m − 1}. O poziție (i,j) din matrice este periculoasă dacă cel
+                puțin o poziție din cele maxim 8 poziții adiacente conține o mină. Fie (l,c) o poziție în matrice. Zona
+                sigură este compusă din toate pozițiile accesibile din (l,c) urmând un drum format din poziții
+                nepericuloase adiacente. Zona activă conține toate pozițiile zonei sigure și pozițiile adiacente zonei
+                sigure. Matricea rezultat are aceleași dimensiuni cu puzzle-ul și este definită astfel:<br><br>
+                &nbsp &nbsp Dacă ((l,c) conține o mină, matricea rezultat va fi chiar puzzle-ul inițial. <br>
+                &nbsp &nbsp Dacă (l,c) nu conține o mină dar este periculoasă, matricea rezultat conține −2 peste tot cu
+                excepția poziției (l,c), care conține numărul de mine vecine.<br>
+                &nbsp &nbsp Altfel, matricea rezultat conține pe fiecare poziție (i,j) din zona activă numărul de mine
+                adiacente poziției (i,j) și −2 în celelalte poziții.<br>
+                <img class="img-center" src="ad7.png" width="600" alt="image"><br> <br>
+                <b>a)</b> Scrieți matricea rezultat pentru exemplul (IV).
+            </div>
+            <div class="text-explicatie">
+                Ne aflăm în cazul al treilea, pentru că poziția dată nu conține mină, și nu este nici periculoasă. Zona
+                activă este reprezentată de toate celulele matricei, cu excepția celor cu valoarea −1. Pe pozițiile
+                periculoase punem 1, pentru că sunt adiacente cu o singură mină, în locul celor cu mină punem −2, iar pe
+                celelalte le lăsăm 0:
+                <img class="img-center" src="ad8.png" width="250" alt="image">
+            </div>
+            <div class="other-box">
+                <b>b)</b> Scrieți în limbajul C++ o funcție care, primind la intrare un puzzle, calculează o matrice (de
+                aceleași
+                dimensiuni cu puzzle-ul) care conține 0 pe pozițiile nepericuloase și 1 pe pozițiile periculoase.
+            </div>
+            <div class="text-explicatie">
+                Scrieți în limbajul C++ o funcție care, primind la intrare un puzzle, calculează o matrice (de aceleași
+                dimensiuni cu puzzle-ul) care conține 0 pe pozițiile nepericuloase și 1 pe pozițiile periculoase.
+                <div class="code-block">
+                    <img src="ad9.png" width="800" alt="image">
+                </div>
+            </div>
+            <div class="other-box">
+                <b>c)</b> Scrieți în limbajul C++ o funcție care:
+                <br><br>
+                &nbsp &nbsp Primește ca argument o matrice reprezentând puzzle-ul Minesweeper și poziția (l,c). <br>
+                &nbsp &nbsp Construiește matricea rezultat după cum este descris mai sus.
+            </div>
+            <div class="text-explicatie">
+                Verificăm mai întâi în ce situație ne aflăm. Primul caz este banal, pur și simplu copiem matricea. În al
+                doilea caz, numărăm vecinii lui (l,c) ca la punctul precedent, iar în rest punem −2. Cazul al treilea
+                este mai special, pentru că trebuie să determinăm zona activă. Putem face asta printr-o parcurgere BFS
+                pe matrice (Algoritmul lui Lee), sau printr-un DFS pe matrice (flood fill). Eu am ales să fac fill,
+                pentru că este mai ușor de implementat, fiind o funcție recursivă.
+                <div class="code-block">
+                    <img src="ad10.png" width="1000" alt="image">
+                </div>
+            </div>
         </div>
     </div>
-
+    </div>
 </body>
 
 </html>

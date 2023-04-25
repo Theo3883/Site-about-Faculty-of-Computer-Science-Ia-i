@@ -1,61 +1,63 @@
-#include <bits/stdc++.h>
-using namespace std;
+// NMAX = valoarea maximă a lui n
+// MMAX = valoarea maximă a lui m
 
-const int NMAX = 101;
-// 2 * (NMAX - 1) = valoarea maximă a lui n
+void fill(int i, int j, int n, int m, int puzzle[NMAX][MMAX], int answer[NMAX][MMAX]) {
+    int addLin[] = {-1, -1, 0, 1, 1, 1, 0, -1};
+    int addCol[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-int n, p;
-int lgA1, A1[NMAX], lgB1, B1[NMAX]; // A, B
-int lgA2, A2[NMAX], lgB2, B2[NMAX]; // A', B'
-
-int main() {
-    cin >> n >> p;
-    if (!(n >= 4 && n % 4 == 0 && 1 <= p && p <= n / 2)) {
-        cout << "date invalide\n";
-        return 0;
+    // Numărăm vecinii cu mină:
+    answer[i][j] = 0;
+    for (int k = 0; k < 8; k++) {
+        int x = i + addLin[k], y = j + addCol[k];
+        if (!(0 <= x && x < n && 0 <= y && y < m))
+            continue;
+        if (puzzle[x][y] == -1)
+            answer[i][j]++;
     }
 
-    lgA1 = lgB1 = n / 2;
-    for (int i = 1, j = 1; i <= n / 4; i++, j += 2) {
-        A1[i] = j;
-        B1[i] = j + 1;
-    }
-    for (int i = n / 4 + 1, j = n / 2 + 2; i <= n / 2; i++, j += 2) {
-        A1[i] = j;
-        B1[i] = j - 1;
-    }
-    cout << "A: "; for (int i = 1; i <= lgA1; i++) cout << A1[i] << ' '; cout << '\n';
-    cout << "B: "; for (int i = 1; i <= lgB1; i++) cout << B1[i] << ' '; cout << '\n';
+    if (answer[i][j] > 0) // Suntem pe marginea zonei active.
+        return; // Vizităm pozițiile periculoase, dar nu ne expandăm din ele.
 
-    if (p % 2) {
-        cout << "partitie inexistenta\n";
-        return 0;
+    for (int k = 0; k < 8; k++) {
+        int x = i + addLin[k], y = j + addCol[k];
+        if (!(0 <= x && x < n && 0 <= y && y < m))
+            continue;
+        if (answer[x][y] == -2) // Dacă n-am vizitat celula:
+            fill(x, y, n, m, puzzle, answer);
     }
-    if (p / 2 % 2) {
-        for (int i = 1; i <= lgA1; i++)
-            if (A1[i] != p / 2)
-                A2[++lgA2] = A1[i];
-        for (int i = 1; i <= lgB1; i++)
-            if (B1[i] == p)
-                B2[++lgB2] = p / 2;
-            else
-                B2[++lgB2] = B1[i];
-    }
-    else {
-        A2[++lgA2] = 2;
-        for (int i = 2; i <= lgA1; i++)
-            if (A1[i] != p / 2 + 1)
-                A2[++lgA2] = A1[i];
-        B2[++lgB2] = 1;
-        for (int i = 2; i <= lgB1; i++)
-            if (B1[i] == p)
-                B2[++lgB2] = p / 2 + 1;
-            else
-                B2[++lgB2] = B1[i];
-    }
-    cout << "A': "; for (int i = 1; i <= lgA2; i++) cout << A2[i] << ' '; cout << '\n';
-    cout << "B': "; for (int i = 1; i <= lgB2; i++) cout << B2[i] << ' '; cout << '\n';
-    return 0;
 }
 
+void buildAnswer(int n, int m, int puzzle[NMAX][MMAX], int l, int c, int answer[NMAX][MMAX]) {
+    int addLin[] = {-1, -1, 0, 1, 1, 1, 0, -1};
+    int addCol[] = {0, 1, 1, 1, 0, -1, -1, -1};
+
+    if (puzzle[l][c] == -1)
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                answer[i][j] = puzzle[i][j];
+    else {
+        // Numărăm vecinii cu mină:
+        int cnt = 0;
+        for (int k = 0; k < 8; k++) {
+            int x = l + addLin[k], y = c + addCol[k];
+            if (!(0 <= x && x < n && 0 <= y && y < m))
+                continue;
+            if (puzzle[x][y] == -1)
+                cnt++;
+        }
+
+        if (cnt) { // Dacă zona este periculoasă:
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < m; j++)
+                    answer[i][j] = -2;
+            answer[l][c] = cnt;
+        }
+        else {
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < m; j++)
+                    answer[i][j] = -2;
+            fill(l, c, n, m, puzzle, answer);
+        }
+    }
+}
 
