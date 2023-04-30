@@ -131,6 +131,9 @@ body {
   margin-top:1vh;
   margin-left:30vh;
 }
+
+/* auto resize for screens*/
+
 @media only screen and (max-width: 1500px) {
   .text-box {
       margin-right: 40px;
@@ -138,14 +141,13 @@ body {
       line-height: 1.3;
   }
 }
-
-/* Media query for larger screens */
 @media only screen and (min-width: 1700px) {
   .text-box {
       font-size: 39px;
       line-height: 1.0;
   }
 }
+
 /* punct */
 .point {
   width: 7px;
