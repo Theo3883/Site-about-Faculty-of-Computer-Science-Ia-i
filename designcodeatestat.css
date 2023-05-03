@@ -1,0 +1,67 @@
+body{
+    display:flex;
+    background-color: gray;
+    justify-content: center;
+    align-items: center;    
+}
+.center{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+.title {
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: 0.12em;
+    font-size: 42px;
+    text-align: center;
+  }
+  .sub-title{
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: 0.12em;
+    font-size: 32px;
+    text-align: center;
+  }
+  .details{
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: 0.12em;
+    font-size: 25px;
+    text-align: right;
+  }
+  .year{
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left:50%;
+  }
+/* butoane mari */ 
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+.button {
+    background-color: rgb(72, 71, 71);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 25px 42px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    margin-right: 5px;
+}
+.button:hover {
+    background-color: black;
+    transform: scale(1.3);
+}
+  
