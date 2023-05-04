@@ -1,6 +1,13 @@
 body{
     background-color: black;
 }
+.center{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
 .black-bar {
     background-color: rgba(0, 0, 0, 0.900);
     color: white;
@@ -40,8 +47,5 @@ body{
     font-size: 40px;
     white-space: nowrap;
     letter-spacing: 0.12em;
-    margin-top: 30vh;
-    margin-bottom: 5px;
-    margin-left: 50vh;
   }
   
